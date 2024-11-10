@@ -101,7 +101,7 @@ const Home = () => {
             <input
               className="flex-grow p-4 bg-gray-700 rounded-l text-white outline-none"
               type="text"
-              placeholder="Enter a promp here"
+              placeholder="Enter a prompt here"
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
               required

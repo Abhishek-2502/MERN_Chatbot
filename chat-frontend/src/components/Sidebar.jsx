@@ -32,7 +32,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         <IoIosCloseCircle />
       </button>
 
-      <div className="text-2xl font-semibold mb-6">ChatBot</div>
+      <div className="text-2xl font-semibold mb-6">Mern ChatBot</div>
       <div className="mb-4">
         <button
           onClick={createChat}

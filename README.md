@@ -21,7 +21,7 @@
 - 🤖 **Gemini AI Integration**: Provides intelligent, contextual responses to user inputs.
 - 📱 **Responsive Layout**: Optimized for both desktop and mobile devices.
 
-## System Architecture 🏛️
+## System Architecture
 The architecture follows a client-server model to handle user interactions efficiently:
 
 ![](Images/SysArchitecture.png)
@@ -33,7 +33,7 @@ The architecture follows a client-server model to handle user interactions effic
 - **Database**: MongoDB (Atlas for cloud storage)
 - **AI/ML Integration**: Gemini AI for enhanced NLP capabilities
 
-## Project Structure 📁 
+## Project Structure
 ```plaintext
 MERN_Chatbot/
 ├── chat-frontend/              # Frontend folder
@@ -57,7 +57,7 @@ MERN_Chatbot/
 └── README.md                   # Project documentation
 ```
 
-## Installation 🛠️
+## Installation 
 
 This project requires separate setups for the **frontend** and **backend**. Follow the steps below to set up both environments:
 
@@ -137,7 +137,7 @@ This project requires separate setups for the **frontend** and **backend**. Foll
 4. View previous chat history or start a new conversation as needed.
 5. Log out when finished to securely end your session.
 
-## Contributing 🤝
+## Contributing 
 We welcome contributions to improve MERN Chatbot! Follow these steps to get started:
 
 1. Fork the repository.

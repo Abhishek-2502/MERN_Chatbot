@@ -5,7 +5,7 @@
 ## 📚 Table of Contents
 1. [Features](#features)
 2. [System Architecture](#system-architecture)
-3. [Tech Stack](#tech-stack)
+3. [Tech Stack](#-tech-stack)
 4. [Project Structure](#project-structure)
 5. [Installation](#installation)
 6. [Screenshots](#screenshots)
@@ -27,7 +27,7 @@ The architecture follows a client-server model to handle user interactions effic
 ![](Images/SysArchitecture.png)
 
 
-## Tech Stack 🛠️
+## 🛠️ Tech Stack 
 - **Frontend**: HTML, Tailwind CSS, React, Vite
 - **Backend**: Node.js, Express, Nodemailer, Axios
 - **Database**: MongoDB (Atlas for cloud storage)

@@ -3,15 +3,15 @@
 **MERN Chatbot** is a conversational web application built using the MERN stack (MongoDB, Express, React, and Node.js). This AI-powered chatbot enables real-time user interaction and is designed to streamline customer service by addressing frequent queries. With integration of Gemini AI, the chatbot understands natural language, providing efficient and relevant responses.
 
 ## 📚 Table of Contents
-1. [Features](#-features)
-2. [System Architecture](#-system-architecture)
-3. [Tech Stack](#-tech-stack)
-4. [Project Structure](#-project-structure)
-5. [Installation](#-installation)
-6. [Screenshots](#-screenshots)
-6. [Usage](#-usage)
-7. [Contributing](#-contributing)
-8. [Authors](#-authors)
+1. [Features](#features)
+2. [System Architecture](#system-architecture)
+3. [Tech Stack](#tech-stack)
+4. [Project Structure](#project-structure)
+5. [Installation](#installation)
+6. [Screenshots](#screenshots)
+6. [Usage](#usage)
+7. [Contributing](#contributing)
+8. [Authors](#authors)
 
 ##  Features
 - 🔒 **Secure Authentication**: Login with OTP verification using Nodemailer.

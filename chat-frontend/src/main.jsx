@@ -6,7 +6,7 @@ import { UserProvider } from "./context/UserContext.jsx";
 import { ChatProvider } from "./context/ChatContext.jsx";
 
 // export const server = "http://localhost:5000";
-export const server = "https://mern-chatbot-mlgu.onrender.com;
+export const server = "https://mern-chatbot-mlgu.onrender.com";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

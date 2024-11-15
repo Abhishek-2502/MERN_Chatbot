@@ -59,59 +59,8 @@ MERN_Chatbot/
 
 ## Installation 
 
-This project requires separate setups for the **frontend** and **backend**. Follow the steps below to set up both environments:
+This project is deployed so can't be run on localhost. If you want to run it on localhost, visit  [GitHub](https://github.com/Abhishek-2502/MERN_Chatbot_Localhost)
 
-### Backend Setup
-
-1. **Navigate to the Backend Directory**:
-   ```bash
-   cd chatserver
-   ```
-
-2. **Install Dependencies**:
-   ```bash
-   npm install
-   ```
-
-3. **Set Up Environment Variables**:
-   - Create a `.env` file in the backend directory.
-   - Add MongoDB URI, email server details for OTP, and JWT secrets:
-     ```plaintext
-     MONGODB_URI=your_mongodb_uri
-     JWT_SECRET=your_jwt_secret
-     EMAIL_HOST=your_email_host
-     EMAIL_PORT=your_email_port
-     EMAIL_USER=your_email_user
-     EMAIL_PASS=your_email_password
-     ```
-
-4. **Run the Backend Server**:
-   ```bash
-   npm run dev
-   ```
-
-### Frontend Setup
-
-1. **Navigate to the Frontend Directory**:
-   ```bash
-   cd chat-frontend
-   ```
-
-2. **Install Dependencies**:
-   ```bash
-   npm install
-   ```
-
-3. **Set Backend Server URL**:
-   - In `src/main.jsx`, set the `server` constant to point to your backend server:
-     ```javascript
-     const server = "http://localhost:5000";
-     ```
-
-4. **Run the Frontend Application**:
-   ```bash
-   npm run dev
-   ```
 
 ## Screenshots
 
@@ -131,7 +80,7 @@ This project requires separate setups for the **frontend** and **backend**. Foll
 
 ## Usage
 
-1. Open your browser and navigate to `http://localhost:3000/`.
+1. Open the provided vercel link your browser.
 2. Enter your email to receive an OTP, then verify to log in.
 3. Begin chatting with the bot on the main chat interface after logging in.
 4. View previous chat history or start a new conversation as needed.
@@ -156,7 +105,7 @@ We welcome contributions to improve MERN Chatbot! Follow these steps to get star
 5. Open a pull request.
 
 ##  Authors
-Developed by:
+
 - **Abhishek Rajput** - [GitHub](https://github.com/Abhishek-2502)
 - **Aaryan Dhawan** - [GitHub](https://github.com/dhawanaaaryan)
 - **Arnav Jain** - [GitHub](https://github.com/Arnavjain2503)

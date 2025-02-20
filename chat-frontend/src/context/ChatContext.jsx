@@ -16,7 +16,7 @@ export const ChatProvider = ({ children }) => {
     setPrompt("");
     try {
       const response = await axios({
-        url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyB7AYQghVvpWb5bbilLDA1_DAe_PVi4U4M",
+        url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyAKVgMdVjYQw9DTO4o6FWNAXnJGxgrEz-0",
         method: "post",
         data: {
           contents: [{ parts: [{ text: prompt }] }],

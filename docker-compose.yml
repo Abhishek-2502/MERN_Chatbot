@@ -1,0 +1,21 @@
+version: '3'
+services:
+  backend:
+    build: ./chatserver
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./chatserver:/app
+      - /app/node_modules
+    environment:
+      - MONGO_URI=mongodb+srv://your-db-uri
+
+  frontend:
+    build: ./chat-frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./chat-frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend

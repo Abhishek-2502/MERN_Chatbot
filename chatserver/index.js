@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
   res.send("Server is up and running!");
 });
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT, '0.0.0.0', () => {
   console.log(`server is working on port ${process.env.PORT}`);
   connectDb();
 });

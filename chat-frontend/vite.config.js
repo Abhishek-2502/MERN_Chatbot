@@ -15,7 +15,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: '0.0.0.0',  // Allow access from external IPs
-    port: 5000,        // Run on port 5000
+    port: 3000,        // Run on port 3000
     strictPort: true,  // Prevent switching to another port if 5000 is busy
   },
 });

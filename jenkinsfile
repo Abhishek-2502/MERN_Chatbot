@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKER_HUB_USERNAME = 'arnavjain953'  // Change this
+        FRONTEND_IMAGE = 'mern_chatbot_frontend'
+        BACKEND_IMAGE = 'mern_chatbot_backend'
+    }
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git 'https://github.com/Abhishek-2502/MERN_Chatbot.git' // Change this
+            }
+        }
+
+        stage('Build Docker Images') {
+            steps {
+                script {
+                    sh 'docker build -t $FRONTEND_IMAGE ./chat-frontend'
+                    sh 'docker build -t $BACKEND_IMAGE ./chat-backend'
+                }
+            }
+        }
+
+        stage('Push to Docker Hub') {
+            steps {
+                script {
+                    sh "docker login -u $DOCKER_HUB_USERNAME -p ${DOCKER_HUB_PASSWORD}"
+                    sh "docker tag $FRONTEND_IMAGE $DOCKER_HUB_USERNAME/$FRONTEND_IMAGE"
+                    sh "docker tag $BACKEND_IMAGE $DOCKER_HUB_USERNAME/$BACKEND_IMAGE"
+                    sh "docker push $DOCKER_HUB_USERNAME/$FRONTEND_IMAGE"
+                    sh "docker push $DOCKER_HUB_USERNAME/$BACKEND_IMAGE"
+                }
+            }
+        }
+
+        stage('Deploy Containers') {
+            steps {
+                script {
+                    sh 'docker-compose down'
+                    sh 'docker-compose up -d'
+                }
+            }
+        }
+    }
+}

@@ -19,6 +19,11 @@ import chatRoutes from "./routes/chatRoutes.js";
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
 
+// Basic route to check server is working or not
+app.get("/", (req, res) => {
+  res.send("Server is up and running!");
+});
+
 app.listen(process.env.PORT, () => {
   console.log(`server is working on port ${process.env.PORT}`);
   connectDb();

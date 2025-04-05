@@ -1,0 +1,21 @@
+# Through Docker
+cd chat-frontend
+docker build -t chatbot-frontend .
+docker run -d -p 5173:5173 --name chatbot-frontend-container chatbot-frontend
+
+cd ..
+
+cd chatserver
+docker build -t chatbot-backend .
+docker run -d -p 5001:5001 --env-file .env --name chatbot-backend-container chatbot-backend
+
+
+# Through Docker_Compose
+docker-compose up --build -d
+docker-compose down
+
+# Delete unused volumes, images and container (Be careful)
+docker system prune -a --volumes
+
+# See logs for debugging
+docker logs container_name

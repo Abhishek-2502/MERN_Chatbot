@@ -1,17 +1,19 @@
-# Base image
+# Use official Node.js 18 image
 FROM node:18
 
-# Create app directory
+# Create and set working directory
 WORKDIR /app
 
-# Copy package files and install dependencies
+# Copy dependency files first
 COPY package*.json ./
+
+# Install dependencies
 RUN npm install
 
-# Copy app files
+# Copy the rest of the app
 COPY . .
 
-# Expose backend port
+# Expose the backend server port
 EXPOSE 5001
 
 # Start the server

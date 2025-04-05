@@ -1,0 +1,32 @@
+pipeline {
+    agent { label 'mern_chatbot' }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git url: 'https://github.com/Abhishek-2502/MERN_Chatbot', branch: 'AWS_Deploy'
+            }
+        }
+
+        stage('Build Backend Docker Image') {
+            steps {
+                dir('chatserver') {
+                    sh 'docker build -t chatbot-backend .'
+                }
+            }
+        }
+
+        stage('Run Backend Container') {
+            steps {
+                sh 'docker rm -f chatbot-backend-container || true'
+                sh 'docker run -d -p 5001:5001 --env-file chatserver/.env --name chatbot-backend-container chatbot-backend'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ Backend deployed successfully!'
+        }
+    }
+}

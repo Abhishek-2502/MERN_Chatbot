@@ -59,8 +59,68 @@ MERN_Chatbot/
 
 ## Installation 
 
-This project is deployed so can't be run on localhost. If you want to run it on localhost, visit  [GitHub](https://github.com/Abhishek-2502/MERN_Chatbot_Localhost)
+This project is deployed so can't be run on localhost. If you want to run it on localhost, change branch to LocalHost and follow belows steps.
 
+### Backend Setup
+
+1. **Navigate to the Backend Directory**:
+   ```bash
+   cd MERN_Chatbot_Backend
+   ```
+
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Set Up Environment Variables**:
+   - Create a `.env` file in the backend directory.
+   - Add MongoDB URI, email server details for OTP, and JWT secrets:
+     ```plaintext
+     PORT = 5001
+
+
+      Db_url="DB_URL"
+
+      Gmail="email@gmail.com"
+      Password="vwwz aehp xxxx  xxxx"
+
+      Activation_sec=yutey
+      Jwt_sec=ertert
+     ```
+
+4. **Run the Backend Server**:
+   ```bash
+   npm run dev
+   ```
+
+### Frontend Setup
+
+1. **Navigate to the Frontend Directory**:
+   ```bash
+   cd MERN_Chatbot_Frontend
+   ```
+
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Set Backend Server URL**:
+   - In `src/main.jsx`, set the `server` constant to point to your backend server:
+     ```javascript
+     const server = "http://localhost:5000";
+     ```
+4. **Set Gemini URL**:
+   - In `src/context/ChatContext.jsx`, set the `Gemini_API` constant to your Gemini API:
+     ```javascript
+     const Gemini_API = "api";
+     ```
+
+4. **Run the Frontend Application**:
+   ```bash
+   npm run dev
+   ```
 
 ## Screenshots
 

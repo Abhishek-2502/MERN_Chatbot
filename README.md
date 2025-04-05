@@ -140,7 +140,7 @@ This project is deployed so can't be run on localhost. If you want to run it on 
 
 ## Usage
 
-1. Open the provided vercel link your browser.
+1. Open the provided vercel or local host link in your browser.
 2. Enter your email to receive an OTP, then verify to log in.
 3. Begin chatting with the bot on the main chat interface after logging in.
 4. View previous chat history or start a new conversation as needed.

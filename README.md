@@ -77,16 +77,12 @@ This project is deployed so can't be run on localhost. If you want to run it on 
    - Create a `.env` file in the backend directory.
    - Add MongoDB URI, email server details for OTP, and JWT secrets:
      ```plaintext
-     PORT = 5001
-
-
-      Db_url="DB_URL"
-
-      Gmail="email@gmail.com"
-      Password="vwwz aehp xxxx  xxxx"
-
-      Activation_sec=yutey
-      Jwt_sec=ertert
+     PORT=5001
+     Db_url=DB_URL
+     Gmail=email@gmail.com
+     Password=vwwz aehp xxxx  xxxx
+     Activation_sec=yutey
+     Jwt_sec=ertert
      ```
 
 4. **Run the Backend Server**:

@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         COMPOSE_FILE = 'docker-compose.yml'
-        ENV_PATH = '/home/ubuntu/chatserver.env' // path on your EC2 instance
+        ENV_PATH = '/home/ubuntu/chatserver.env' // your environment file on EC2
     }
 
     stages {
@@ -28,8 +28,9 @@ pipeline {
             steps {
                 echo 'Pruning unused Docker resources before build...'
                 sh '''
-                    docker-compose down --remove-orphans
-                    docker system prune -f --volumes
+                    docker-compose down --remove-orphans --volumes || true
+                    docker container rm -f chatbot_backend || true
+                    docker system prune -f --volumes || true
                 '''
             }
         }

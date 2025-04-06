@@ -1,0 +1,46 @@
+# Node modules
+**/node_modules
+**/bower_components
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output
+**/dist
+**/build
+.vite
+
+# Environment files
+.env
+.env.*  
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Docker files
+Dockerfile*
+.dockerignore
+
+# Editor/project settings
+.vscode
+.idea
+*.swp
+
+# Coverage reports
+coverage
+*.lcov
+
+# Test output
+jest-test-results.json
+
+# Misc
+*.tgz
+*.gz
+*.zip
+*.tar
+*.sqlite
+*.pid

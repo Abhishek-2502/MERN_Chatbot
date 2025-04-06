@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         COMPOSE_FILE = 'docker-compose.yml'
+        ENV_PATH = '/home/ubuntu/chatserver.env' // path on your EC2 instance
     }
 
     stages {
@@ -10,6 +11,16 @@ pipeline {
             steps {
                 echo 'Checking out source code...'
                 checkout scm
+            }
+        }
+
+        stage('Inject .env') {
+            steps {
+                echo 'Copying .env into chatserver folder...'
+                sh '''
+                    cp $ENV_PATH chatserver/.env
+                    ls -la chatserver/
+                '''
             }
         }
 

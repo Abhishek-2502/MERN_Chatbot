@@ -2,7 +2,6 @@ pipeline {
     agent { label 'mern_chatbot' }
 
     environment {
-        COMPOSE_FILE = 'docker-compose.yml'
         ENV_PATH = '/home/ubuntu/chatserver.env' // your environment file on EC2
     }
 
@@ -51,6 +50,12 @@ pipeline {
         always {
             echo 'Build and deployment process finished.'
             sh 'docker-compose ps'
+        }
+        failure {
+            echo 'Build failed!'
+        }
+        success {
+            echo 'Build and deployment successful!'
         }
     }
 }

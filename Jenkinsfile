@@ -8,28 +8,36 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/Abhishek-2502/MERN_Chatbot', branch: 'AWS_Deploy'
+                echo 'Checking out source code...'
+                checkout scm
             }
         }
 
-        stage('Build & Deploy with Docker Compose') {
+        stage('Pre-Build Cleanup') {
             steps {
-                sh 'docker-compose down'
-                sh 'docker-compose build'
-                sh 'docker-compose up -d'
+                echo 'Pruning unused Docker resources before build...'
+                sh '''
+                    docker-compose down --remove-orphans
+                    docker system prune -f --volumes
+                '''
             }
         }
 
-        stage('Clean Docker System (Optional)') {
+        stage('Build and Deploy') {
             steps {
-                sh 'docker system prune -f --volumes'
+                echo 'Building and starting Docker containers...'
+                sh '''
+                    docker-compose build --no-cache
+                    docker-compose up -d
+                '''
             }
         }
     }
 
     post {
         always {
-            echo "✅ Full stack build & deploy complete."
+            echo 'Build and deployment process finished.'
+            sh 'docker-compose ps'
         }
     }
 }

@@ -4,12 +4,25 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/Abhishek-2502/MERN_Chatbot', branch: 'AWS_Deploy'
+                echo 'Checking out frontend source code...'
+                checkout scm
+            }
+        }
+
+        stage('Pre-Build Cleanup') {
+            steps {
+                echo 'Cleaning up old frontend containers and images...'
+                sh '''
+                    docker rm -f chatbot-frontend-container || true
+                    docker image rm chatbot-frontend || true
+                    docker system prune -f || true
+                '''
             }
         }
 
         stage('Build Frontend Docker Image') {
             steps {
+                echo 'Building Docker image for frontend...'
                 dir('chat-frontend') {
                     sh 'docker build -t chatbot-frontend .'
                 }
@@ -18,7 +31,7 @@ pipeline {
 
         stage('Run Frontend Container') {
             steps {
-                sh 'docker rm -f chatbot-frontend-container || true'
+                echo 'Running frontend container...'
                 sh 'docker run -d -p 5173:5173 --name chatbot-frontend-container chatbot-frontend'
             }
         }
@@ -26,7 +39,16 @@ pipeline {
 
     post {
         success {
-            echo '✅ Frontend deployed successfully!'
+            echo 'Frontend deployed successfully.'
+            sh 'docker ps --filter name=chatbot-frontend-container'
+        }
+        failure {
+            echo 'Frontend deployment failed.'
+            sh 'docker logs chatbot-frontend-container || true'
+        }
+        always {
+            echo 'Displaying all Docker containers...'
+            sh 'docker ps -a'
         }
     }
 }

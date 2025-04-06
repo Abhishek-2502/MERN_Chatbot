@@ -1,15 +1,42 @@
 pipeline {
     agent { label 'mern_chatbot' }
 
+    environment {
+        BACKEND_ENV_PATH = '/home/ubuntu/chatserver.env' // Update if needed
+    }
+
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/Abhishek-2502/MERN_Chatbot', branch: 'AWS_Deploy'
+                echo 'Checking out backend source code...'
+                checkout scm
+            }
+        }
+
+        stage('Inject .env') {
+            steps {
+                echo 'Copying .env into chatserver folder...'
+                sh '''
+                    cp $BACKEND_ENV_PATH chatserver/.env
+                    ls -la chatserver/
+                '''
+            }
+        }
+
+        stage('Pre-Build Cleanup') {
+            steps {
+                echo 'Cleaning up old backend containers and images...'
+                sh '''
+                    docker rm -f chatbot-backend-container || true
+                    docker image rm chatbot-backend || true
+                    docker system prune -f || true
+                '''
             }
         }
 
         stage('Build Backend Docker Image') {
             steps {
+                echo 'Building Docker image for backend...'
                 dir('chatserver') {
                     sh 'docker build -t chatbot-backend .'
                 }
@@ -18,15 +45,29 @@ pipeline {
 
         stage('Run Backend Container') {
             steps {
-                sh 'docker rm -f chatbot-backend-container || true'
-                sh 'docker run -d -p 5001:5001 --env-file chatserver/.env --name chatbot-backend-container chatbot-backend'
+                echo 'Running backend container...'
+                sh '''
+                    docker run -d -p 5001:5001 \
+                        --env-file chatserver/.env \
+                        --name chatbot-backend-container \
+                        chatbot-backend
+                '''
             }
         }
     }
 
     post {
         success {
-            echo '✅ Backend deployed successfully!'
+            echo 'Backend deployed successfully.'
+            sh 'docker ps --filter name=chatbot-backend-container'
+        }
+        failure {
+            echo 'Backend deployment failed.'
+            sh 'docker logs chatbot-backend-container || true'
+        }
+        always {
+            echo 'Displaying all Docker containers...'
+            sh 'docker ps -a'
         }
     }
 }

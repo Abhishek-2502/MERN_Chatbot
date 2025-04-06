@@ -30,6 +30,7 @@ pipeline {
                 sh '''
                     docker-compose down --remove-orphans --volumes || true
                     docker container rm -f chatbot_backend || true
+                    docker container rm -f chatbot_frontend || true
                     docker system prune -f --volumes || true
                 '''
             }
